@@ -2,6 +2,7 @@
    Background: #0d1117
    Text color: #E6EDF3
    Fonte: Arial
+   + safe-area insets and responsive font for mobile
 */
 html, body {
   height: 100%;
@@ -15,31 +16,37 @@ html, body {
 }
 
 body {
-  padding: 1.25rem;
-}
-
-p {
-  line-height: 1.45;
-  max-width: 65ch;
-  margin: 0;
-}
-/* proteger de notch / barras de gesto */
-body {
+  /* respeita notch / barras de gesto */
   padding-top: calc(1.25rem + env(safe-area-inset-top));
   padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
   padding-left: 1.25rem;
   padding-right: 1.25rem;
-  -webkit-text-size-adjust: 100%; /* evita zoom automático em alguns navegadores */
+  -webkit-text-size-adjust: 100%;
 }
 
-/* fonte responsiva: aumenta em telas pequenas */
+main {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 p {
   font-size: clamp(15px, 4vw, 18px);
   line-height: 1.6;
   max-width: 65ch;
+  margin: 0 0 1.25rem 0;
 }
 
-/* se quiser espaço extra embaixo para a barra de navegação do Android */
+/* imagem responsiva */
+.hero {
+  display: block;
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  margin: 0 0 1rem 0;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
 @media (max-width: 420px) {
   body { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
 }
