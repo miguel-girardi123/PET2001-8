@@ -23,3 +23,23 @@ p {
   max-width: 65ch;
   margin: 0;
 }
+/* proteger de notch / barras de gesto */
+body {
+  padding-top: calc(1.25rem + env(safe-area-inset-top));
+  padding-bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  -webkit-text-size-adjust: 100%; /* evita zoom automático em alguns navegadores */
+}
+
+/* fonte responsiva: aumenta em telas pequenas */
+p {
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.6;
+  max-width: 65ch;
+}
+
+/* se quiser espaço extra embaixo para a barra de navegação do Android */
+@media (max-width: 420px) {
+  body { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
+}
